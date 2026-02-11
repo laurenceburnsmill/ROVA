@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Launching ROVA</title>
+
+<style>
+
+
+:root {
+  --bg: #f7f7f5;      /* warm off-white */
+  --text: #262626;    /* soft near-black */
+  --muted: #666666;
+}
+
+.dark {
+  --bg: #1d1d1f;      /* soft charcoal */
+  --text: #F0EEE6;    /* muted off-white */
+  --muted: #999999;
+}
+
+
+body {
+  margin: 40px auto;
+  max-width: 720px;
+  padding: 0 20px;
+  font-family: Georgia, "Times New Roman", serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  font-size: 18px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0px;
+}
+
+h1 {
+  font-weight: normal;
+  font-size: 26px;
+  margin: 0;
+}
+
+.post-title {
+  font-size: 30px;
+  margin-bottom: 5px;
+  font-family:Arial, Helvetica, sans-serif;
+  font-weight: 800;
+  font-style: italic;
+}
+
+article img {
+  display: block;
+  margin-bottom: 10px;   /* reduce gap */
+  margin-top: 20px;   /* reduce gap */
+
+}
+
+.post-date {
+  color: var(--muted);
+  margin-bottom: 40px;
+  font-size: 15px;
+}
+
+a {
+  color: var(--link);
+}
+
+.toggle {
+  cursor: pointer;
+  border: 1px solid var(--text);
+  padding: 4px 8px;
+  font-size: 14px;
+  background: none;
+  color: var(--text);
+}
+
+
+.toggle-switch {
+  position: relative;
+  width: 40px;
+  height: 20px;
+}
+
+.toggle-checkbox {
+  display: none;
+}
+
+.toggle-label {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--muted);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.toggle-label::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 2px;
+  left: 2px;
+  background: var(--bg);
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.toggle-checkbox:checked + .toggle-label {
+  background: var(--text);
+}
+
+.toggle-checkbox:checked + .toggle-label::after {
+  transform: translateX(20px);
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: -15px;
+  font-family:Arial, Helvetica, sans-serif;
+  font-weight: 700;
+}
+
+
+</style>
+</head>
+<link rel="icon" type="image/png" href="rova icon 3.png">
+
+<body>
+
+<header>
+  <div><a href="index.html">Laurie Burns-Mill</a></div>
+
+<div class="toggle-switch">
+  <input type="checkbox" id="theme-toggle" class="toggle-checkbox" onchange="toggleMode()" />
+  <label for="theme-toggle" class="toggle-label"></label>
+</div>
+
+</header>
+
+<article>
+  <img src="rova icon 3.png" style="max-width:10%; height:auto;">
+  <div class="post-title">Launching ROVA-V1</div>
+  <div class="post-date">February 11, 2026</div>
+
+  <img src="demo.gif" style="max-width:100%; height:auto;">
+
+
+
+  <p>
+I'm Laurie Burns-Mill, I'm a 25 year old solo founder attempting to build an Agentic Vision startup.
+The purpose is to increase the interpretability and the efficiency of Computer Vision models.
+</p>
+</article>
+<script>
+function toggleMode() {
+  const checkbox = document.getElementById("theme-toggle");
+  document.documentElement.classList.toggle("dark", checkbox.checked);
+  localStorage.setItem("theme", checkbox.checked ? "dark" : "light");
+}
+
+(function() {
+  const saved = localStorage.getItem("theme");
+  const checkbox = document.getElementById("theme-toggle");
+
+  if (saved === "dark") {
+    document.documentElement.classList.add("dark");
+    checkbox.checked = true;
+  }
+})();
+</script>
+
+</script>
+
+</body>
+</html>
